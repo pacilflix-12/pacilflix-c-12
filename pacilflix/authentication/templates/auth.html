@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilih Login atau Register</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .choice-container {
+    border: 1px solid #000;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .choice-container h2 {
+    text-align: center;
+  }
+  .button-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .button-group button {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  .button-group button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<div class="choice-container">
+  <h2>PaciFlix - 12</h2>
+  <div class="button-group">
+    <button type="button" onclick="location.href='login';">Login</button>
+    <button type="button" onclick="location.href='register';">Register</button>
+  </div>
+</div>
+</body>
+</html>
