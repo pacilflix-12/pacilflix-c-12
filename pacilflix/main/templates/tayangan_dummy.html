@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body, #downloadModal .modal-header, #downloadModal .modal-body, #downloadModal .modal-footer {
+            font-family: 'Montserrat', sans-serif; /* Apply Montserrat font to the modal content */
+        }
+        #downloadModal .modal-footer {
+        display: flex;
+        justify-content: center; /* Center the button */
+        border-top: none; /* If you want to remove the border */
+        background: #e9ecef;
+        
+        }
+        #downloadModal .modal-dialog {
+            max-width: 600px; /* Increase the width of the modal */
+            max-height: 600px;
+        }
+        #downloadModal .modal-header {
+            background: #380d0d;
+            color: #fff;
+            text-align: center;
+        }
+        #downloadModal .modal-body {
+            background: #e9ecef;
+            text-align: justify; /* Justify the body content */
+        }
+        #downloadModal .modal-title {
+            margin: auto;
+        }
+        #downloadModal .btn-success {
+            background: #06041f;
+            border: none;
+        }
+        #downloadModal .btn-success:hover {
+            background: #333;
+        }
+
+        body, #favoritesModal .modal-header, #favoritesModal .modal-body, #favoritesModal .modal-footer {
+            font-family: 'Montserrat', sans-serif;
+        }
+        #favoritesModal .modal-dialog {
+            max-width: 600px;
+            max-height: 600px;
+        }
+
+
+        #favoritesModal .modal-header {
+            display: flex;
+            justify-content: space-between; /* Align the title and close button on opposite ends */
+            align-items: center;
+            background: #380d0d;
+            color: #fff;
+        }
+
+        #favoritesModal .modal-title {
+            flex-grow: 1; /* Allows the title to take up the available space */
+            text-align: center;
+        }
+        #favoritesModal .modal-body {
+            background: #e9ecef;
+            text-align: justify;
+        }
+        #favoritesModal .modal-footer {
+            display: flex;
+            justify-content: center;
+            border-top: none;
+            background: #e9ecef;
+        }
+        #favoritesModal .btn-success {
+            background: #06041f;
+            border: none;
+        }
+        #favoritesModal .btn-success:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Button Trigger Modal --> 
+<div class="d-flex flex-column align-items-start">
+    <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#downloadModal">
+        Tambah ke Unduhan
+    </button>
+    
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#favoritesModal">
+        Tambah ke Daftar Favorit
+    </button>
+    </div>
+
+<!-- Download Modal -->
+<div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="downloadModalLabel">SUKSES MENAMBAHKAN TAYANGAN KE DAFTAR UNDUHAN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="downloadMessage">Selamat! Anda telah berhasil mengunduh <b>Harry Potter</b> dan akan berlaku hingga <b>2024-05-05 10:45</b>. Cek informasi selengkapnya pada halaman daftar unduhan.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Daftar Unduhan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Favorites Modal -->
+  <div class="modal fade" id="favoritesModal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="favoritesModalLabel">TAMBAH KE DAFTAR FAVORIT</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="favoriteList">Judul Daftar Favorit:</label>
+              <select id="favoriteList" class="form-control">
+                <option value="fav1">Epic Adventures</option>
+                <option value="fav2">Indie Treasures</option>
+                <!-- Add more options here -->
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Tambah</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Include Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+// When the user clicks the download button, update the modal content with the date
+$('#downloadBtn').click(function() {
+  var currentDatePlusSeven = new Date();
+  currentDatePlusSeven.setDate(currentDatePlusSeven.getDate() + 7);
+  var formattedDate = currentDatePlusSeven.toISOString().substring(0, 10);
+  $('#downloadMessage').text("Selamat! Anda telah berhasil mengunduh [Judul Tayangan] dan akan berlaku hingga " + formattedDate + ". Cek informasi selengkapnya pada halaman daftar unduhan.");
+});
+</script>
+
+</body>
+</html>
