@@ -50,62 +50,71 @@
         .centered {
             text-align: center;
         }
-        .hapus-btn {
-            padding: 6px 12px;
-            background-color: #e50914;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s;
-            display: inline-block;
-        }
-        .hapus-btn:hover {
-            background-color: #f63535;
-        }
-        .contributor-title {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* for constributor title such as actors, film director, and so on */
+
+        .dropbtn {
+        background-color: #e50914;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
         }
 
-        .contributor-name {
-            text-align: center;
-            margin-top: 8px;
-            color: #06041f; /* for the name of the contributor */
+        .dropbtn:hover, .dropbtn:focus {
+        background-color: #f63535;
         }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        border: 1px solid #ddd;
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .show {display:block;}
+
     </style>
 
     <div class="container">
         <h1>Daftar Kontributor</h1>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Filter</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href=#>Aktor</a>
+              <a href=#>Sutradara</a>
+              <a href=#>Blog</a>
+            </div>
+          </div>
+
         <table>
             <tr>
-                <th>Judul</th>
-                <th>Waktu Ditambahkan</th>
-                <th>Aksi</th>
+                <th>Nama</th>
+                <th>Tipe</th>
+                <th>Jenis Kelamin</th>
+                <th>Kewarganegaraan</th>
             </tr>
 
             <tr>
-                <td>
-                    <div class="movie-details">
-                        <img src="https://cinemags.org/wp-content/uploads/2023/12/Percy-Jackson-and-the-Olympians-akan-tayang-mulai-tanggal-20-Desember-2023-di-Disney-Hotstar..png" alt="Percy Jackson" class="movie-img">
-                        <div class="movie-title">Percy Jackson</div>
-                    </div>
-                </td>
-                <td class="centered">2023-05-15 9:30:00</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="movie-details">
-                        <img src="https://m.media-amazon.com/images/M/MV5BMTYyOTAxMDA0OF5BMl5BanBnXkFtZTcwNzgwNTc1NA@@._V1_.jpg" alt="Insidious" class="movie-img">
-                        <div class="movie-title">Insidious</div>
-                    </div>
-                </td>
-                <td class="centered">2023-06-27 19:00:00</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
+                <td>placeholder</td>
+                <td>placeholder</td>
+                <td>placeholder</td>
+                <td>placeholder</td>
             </tr>
         </table>
     </div>
