@@ -3,56 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Form Registrasi</title>
+<title>Form Registrasi - PaciFlix</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> 
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #06041f; /* Biru */
   }
   .registration-container {
-    border: 1px solid #000;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Putih */
+    padding: 40px; /* Padding yang lebih besar untuk simetri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px; /* Penambahan border-radius untuk estetika */
+    width: auto; /* Atur lebar sesuai kebutuhan */
+    max-width: 400px; /* Lebar maksimum yang diinginkan */
   }
   .registration-container h2 {
     text-align: center;
-    border-bottom: 1px solid magenta;
+    margin-bottom: 20px; /* Menambahkan ruang di bawah judul */
+    border-bottom: 2px solid #000; /* Hitam */
+    padding-bottom: 10px;
   }
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Menambahkan ruang di antara input */
   }
   .form-group label {
-    display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Menambahkan ruang di bawah label */
   }
   .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: calc(100% - 16px); /* Mengurangi lebar untuk mengakomodasi padding */
+    padding: 8px; /* Menambahkan padding pada input */
+    border: 1px solid #000; /* Hitam */
+    border-radius: 4px; /* Menambahkan border-radius pada input */
+    color: #000; /* Hitam */
   }
   .form-group button {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #5cb85c;
-    color: white;
+    padding: 12px; /* Menambahkan padding pada tombol */
+    border: 1px solid #000; /* Hitam */
+    border-radius: 4px; /* Menambahkan border-radius pada tombol */
+    background-color: #380d0d; /* Merah */
+    color: white; /* Putih */
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   .form-group button:hover {
-    background-color: #4cae4c;
+    background-color: #4a1515; /* Merah yang lebih gelap saat hover */
   }
 </style>
 </head>
 <body>
 <div class="registration-container">
   <h2>FORM REGISTRASI</h2>
-  <form action="/submit-registration" method="POST"> <!-- You should replace the action with your server endpoint -->
+  <form action="/path-to-registration-handler" method="post"> <!-- Sesuaikan action dengan URL penangan registrasi Anda -->
     <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
