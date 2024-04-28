@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Contributor List</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>List Langganan</title>
+
+    <style>
+        body, h1, th {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #06041f;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        th {
+            background-color: #380d0d;
+            color: white;
+            text-align: center;
+        }
+        td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        tr {
+            border-bottom: 10px solid #06041f;
+        }
+        .centered {
+            text-align: center;
+        }
+        .hapus-btn {
+            padding: 6px 12px;
+            background-color: #e50914;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+        .hapus-btn:hover {
+            background-color: #f63535;
+        }
+        .contributor-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* for constributor title such as actors, film director, and so on */
+        }
+
+        .contributor-name {
+            text-align: center;
+            margin-top: 8px;
+            color: #06041f; /* for the name of the contributor */
+        }
+    </style>
+
+    <div class="container">
+        <h1>Daftar Kontributor</h1>
+        <table>
+            <tr>
+                <th>Judul</th>
+                <th>Waktu Ditambahkan</th>
+                <th>Aksi</th>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="movie-details">
+                        <img src="https://cinemags.org/wp-content/uploads/2023/12/Percy-Jackson-and-the-Olympians-akan-tayang-mulai-tanggal-20-Desember-2023-di-Disney-Hotstar..png" alt="Percy Jackson" class="movie-img">
+                        <div class="movie-title">Percy Jackson</div>
+                    </div>
+                </td>
+                <td class="centered">2023-05-15 9:30:00</td>
+                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="movie-details">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTYyOTAxMDA0OF5BMl5BanBnXkFtZTcwNzgwNTc1NA@@._V1_.jpg" alt="Insidious" class="movie-img">
+                        <div class="movie-title">Insidious</div>
+                    </div>
+                </td>
+                <td class="centered">2023-06-27 19:00:00</td>
+                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
+            </tr>
+        </table>
+    </div>
+</head>
