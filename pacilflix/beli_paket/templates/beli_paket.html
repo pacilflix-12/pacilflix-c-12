@@ -9,6 +9,22 @@
     <title>Subscribe</title>
 
     <style>
+        .navbar {
+            background-color: #333;
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .navbar a:hover {
+            background-color: #555;
+        }
         body, h1, th {
             margin: 0;
             padding: 0;
@@ -88,6 +104,16 @@
         .show {display:block;}
     </style>
     
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">Trailer</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Search</button>
+        </div>
+        <a href="#login" style="float:right">Login</a>
+    </div>
+
     <div class="container">
         <h1>HALAMAN BELI</h1>
         <h3>Informasi Paket yang Ingin Dibeli</h3>
