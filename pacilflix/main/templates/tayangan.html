@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halaman Hitam</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1, .left-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+        card-container {
+            display: flex;
+            flex-direction: row; /* Cards side by side */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 0 0 auto; /* Prevent cards from shrinking, keeping them a fixed width */
+            width: 300px; /* Fixed width for each card */
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column; /* Stack sections vertically */
+            margin-bottom: 20px; /* Space between sections */
+        }
+        select {
+            margin: 20px auto;
+            display: block;
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: 1px solid grey;
+            font-size: 18px;
+            width: 300px;
+        }
+        .navbar {
+            background-color: #333;
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .navbar a:hover {
+            background-color: #555;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container input[type="text"], .search-container button {
+            padding: 8px;
+            margin: 4px 2px;
+            border: none;
+            border-radius: 4px;
+        }
+        .search-container input[type="text"] {
+            flex-grow: 1;
+        }
+        .search-container button {
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #666;
+        }
+        .card-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .card-container::-webkit-scrollbar-track {
+            background: #202020;
+        }
+        .card-container::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 4px;
+        }
+        .card {
+            flex: 0 0 auto;
+            width: 300px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card-info {
+            padding: 15px;
+        }
+        .card-info h2, .card-info p {
+            margin-bottom: 10px;
+        }
+        .card-info a {
+            color: #08f;
+            text-decoration: none;
+        }
+        .additional-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">Trailer</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Search</button>
+        </div>
+        <a href="#login" style="float:right">Login</a>
+    </div>
+
+    <h1>Daftar Tayangan</h1>
+    <div class="section">
+    <h1 class="left-text">10 tayangan terbaik:</h1>
+    <select>
+        <option value="global">Top 10 Global</option>
+        <option value="local">Top 10 Indonesia</option>
+    </select>
+    <div class="card-container">
+        <!-- Buat loop di sini atau copy paste secara manual untuk setiap card jika tidak menggunakan JavaScript -->
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-info">
+                <h2>1. Percy Jackson</h2>
+                <p><strong>Sinopsis Trailer:</strong> Percy Jackson menemukan dirinya sebagai anak dewa dan memulai petualangan untuk menemukan pencuri petir Zeus </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/percy-jackson">https://example.com/trailers/percy-jackson</a></p>
+                <p><strong>Release Date Trailer:</strong> 2010-02-12 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>2. Harry Potter</h2>
+                <p><strong>Sinopsis Trailer:</strong> Harry Potter memulai tahun pertamanya di Hogwarts, belajar sihir dan membentuk persahabatan yang akan bertahan seumur hidup </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/harry-potter">https://example.com/trailers/harry-potter</a></p>
+                <p><strong>Release Date Trailer:</strong> 2001-11-16 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>3. Maze Runner</h2>
+                <p><strong>Sinopsis Trailer:</strong> Terbangun di labirin besar tanpa ingatan masa lalu, Thomas harus bergabung dengan pelari lain untuk mencari jalan keluar </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/maze-runner">https://example.com/trailers/maze-runner</a></p>
+                <p><strong>Release Date Trailer:</strong>2014-09-19 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>4. Hereditary</h2>
+                <p><strong>Sinopsis Trailer:</strong> Setelah kematian sang matriark, keluarga Graham menghadapi misteri menakutkan tentang warisan keluarga mereka </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/hereditary">https://example.com/trailers/hereditary</a></p>
+                <p><strong>Release Date Trailer:</strong> 2018-06-08 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>5. Siksa Kubur</h2>
+                <p><strong>Sinopsis Trailer:</strong> Dua saudara kandung menghadapi teror supernatural saat upacara pemakaman ibu mereka mengungkap kutukan keluarga </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/siksa-kubur">https://example.com/trailers/siksa-kubur</a></p>
+                <p><strong>Release Date Trailer:</strong> 2020-03-27 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>6. Makmum</h2>
+                <p><strong>Sinopsis Trailer:</strong> Ketika seorang wanita menginap di asrama tua, dia menemukan bahwa dia tidak sendirian; makhluk supernatural mengawasi setiap geraknya </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/makmum">https://example.com/trailers/makmumr</a></p>
+                <p><strong>Release Date Trailer:</strong> 2019-08-15 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>7. Pengabdi Setan</h2>
+                <p><strong>Sinopsis Trailer:</strong> Sebuah keluarga menemukan bahwa ibu mereka meninggalkan lebih dari sekadar kenangan saat mereka diganggu oleh kekuatan supernatural </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/pengabdi-setan">https://example.com/trailers/pengabdi-setan</a></p>
+                <p><strong>Release Date Trailer:</strong> 2017-09-28 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>8. Conjuring</h2>
+                <p><strong>Sinopsis Trailer:</strong> Penyelidik paranormal Ed dan Lorraine Warren menghadapi kasus hantu paling menakutkan mereka dalam menyelamatkan keluarga dari teror di rumah pertanian </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/conjuring">https://example.com/trailers/conjuring</a></p>
+                <p><strong>Release Date Trailer:</strong> 2013-07-19 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>9. Inside Out</h2>
+                <p><strong>Sinopsis Trailer:</strong> Ikuti petualangan emosi dalam pikiran Riley saat mereka mengatasi tantangan dari kehidupan baru di San Francisco </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/inside-out">https://example.com/trailers/inside-out</a></p>
+                <p><strong>Release Date Trailer:</strong> 2015-06-19 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-info">
+                <h2>10. Elements</h2>
+                <p><strong>Sinopsis Trailer:</strong> Empat remaja dengan kekuatan elemen alam bergabung untuk melindungi dunia dari ancaman kuno </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/elements">https://example.com/trailers/elements</a></p>
+                <p><strong>Release Date Trailer:</strong> 2018-06-19 </p>
+                <p><strong>Total view in last 7 days:</strong> 4 </p>
+            </div>
+        </div>
+    </div>
+    <!-- Anda bisa menambahkan daftar atau elemen lain di sini untuk menampilkan tayangan -->
+    <h1 class="left-text">Film:</h1>
+    <div class="section">
+    <div class="card-container">
+        <!-- Add cards for films here -->
+        <div class="card">
+            <div class="card-info">
+                <h2>Makmum</h2>
+                <p><strong>Sinopsis Trailer:</strong> Ketika seorang wanita menginap di asrama tua, dia menemukan bahwa dia tidak sendirian; makhluk supernatural mengawasi setiap geraknya </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/makmum">https://example.com/trailers/makmum</a></p>
+                <p><strong>Release Date Trailer:</strong> 2019-08-15 </p>
+            </div>
+        </div>
+    </div>
+        <!-- Additional film cards as needed -->
+    </div>
+
+    <!-- Section for Series -->
+    <h1 class="left-text">Series:</h1>
+    <div class="section">
+    <div class="card-container">
+        <!-- Add cards for series here -->
+        <div class="card">
+            <div class="card-info">
+                <h2>Percy Jackson</h2>
+                <p><strong>Sinopsis Trailer:</strong> Percy Jackson menemukan dirinya sebagai anak dewa dan memulai petualangan untuk menemukan pencuri petir Zeus </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/percy-jackson"> https://example.com/trailers/percy-jackson </a></p>
+                <p><strong>Release Date Trailer:</strong> 2010-02-12</p>
+            </div>
+        </div>
+        <!-- Additional series cards as needed -->
+    </div>
+</div>
+    
+</body>
+</html>
