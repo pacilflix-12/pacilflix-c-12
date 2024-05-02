@@ -13,6 +13,27 @@
             text-align: center;
             margin-top: 20px;
         }
+        card-container {
+            display: flex;
+            flex-direction: row; /* Cards side by side */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 0 0 auto; /* Prevent cards from shrinking, keeping them a fixed width */
+            width: 300px; /* Fixed width for each card */
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column; /* Stack sections vertically */
+            margin-bottom: 20px; /* Space between sections */
+        }
         select {
             margin: 20px auto;
             display: block;
@@ -117,6 +138,7 @@
     </div>
 
     <h1>Daftar Tayangan</h1>
+    <div class="section">
     <h1 class="left-text">10 tayangan terbaik:</h1>
     <select>
         <option value="global">Top 10 Global</option>
@@ -215,7 +237,40 @@
                 <p><strong>Total view in last 7 days:</strong> 4 </p>
             </div>
         </div>
+    </div>
     <!-- Anda bisa menambahkan daftar atau elemen lain di sini untuk menampilkan tayangan -->
+    <h1 class="left-text">Film:</h1>
+    <div class="section">
+    <div class="card-container">
+        <!-- Add cards for films here -->
+        <div class="card">
+            <div class="card-info">
+                <h2>Makmum</h2>
+                <p><strong>Sinopsis Trailer:</strong> Ketika seorang wanita menginap di asrama tua, dia menemukan bahwa dia tidak sendirian; makhluk supernatural mengawasi setiap geraknya </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/makmum">https://example.com/trailers/makmum</a></p>
+                <p><strong>Release Date Trailer:</strong> 2019-08-15 </p>
+            </div>
+        </div>
+    </div>
+        <!-- Additional film cards as needed -->
+    </div>
+
+    <!-- Section for Series -->
+    <h1 class="left-text">Series:</h1>
+    <div class="section">
+    <div class="card-container">
+        <!-- Add cards for series here -->
+        <div class="card">
+            <div class="card-info">
+                <h2>Percy Jackson</h2>
+                <p><strong>Sinopsis Trailer:</strong> Percy Jackson menemukan dirinya sebagai anak dewa dan memulai petualangan untuk menemukan pencuri petir Zeus </p>
+                <p><strong>URL Trailer:</strong> <a href="https://example.com/trailers/percy-jackson"> https://example.com/trailers/percy-jackson </a></p>
+                <p><strong>Release Date Trailer:</strong> 2010-02-12</p>
+            </div>
+        </div>
+        <!-- Additional series cards as needed -->
+    </div>
+</div>
     
 </body>
 </html>
