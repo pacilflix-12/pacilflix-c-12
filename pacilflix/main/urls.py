@@ -1,5 +1,6 @@
 from django.urls import path
 from main.views import show_main, show_trailer, show_tayangan, show_ulasan, show_series, show_film, show_episode
+from main.views import show_main
 
 app_name = 'main'
 

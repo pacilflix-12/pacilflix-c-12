@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Login - PaciFlix</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> 
+<style>
+  body {
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #06041f; /* Biru */
+  }
+  .login-container {
+    background-color: #fff; /* Putih */
+    padding: 40px; /* Tambahkan padding yang cukup untuk simetri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px; /* Penambahan border-radius untuk estetika */
+    width: auto; /* Atau tentukan lebar tetap sesuai kebutuhan */
+    max-width: 400px; /* Atau lebar maksimum yang diinginkan */
+  }
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Menambahkan ruang di bawah judul */
+  }
+  .form-group {
+    margin-bottom: 20px; /* Menambahkan ruang di antara input */
+  }
+  .form-group label {
+    margin-bottom: 8px; /* Menambahkan ruang di bawah label */
+  }
+  .form-group input {
+    width: calc(100% - 16px); /* Mengurangi lebar untuk mengakomodasi padding */
+    padding: 8px; /* Menambahkan padding pada input */
+    border: 1px solid #ddd;
+    border-radius: 4px; /* Menambahkan border-radius pada input */
+  }
+  .form-group button {
+    width: 100%;
+    padding: 12px; /* Menambahkan padding pada tombol */
+    border: none;
+    border-radius: 4px; /* Menambahkan border-radius pada tombol */
+    background-color: #380d0d; /* Warna tombol */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .form-group button:hover {
+    background-color: #4a1515; /* Warna tombol saat hover */
+  }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <h2>FORM LOGIN</h2>
+  <form action="/path-to-login-handler" method="post"> <!-- Sesuaikan action dengan URL penangan login Anda -->
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+      <button type="submit">MASUK</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
