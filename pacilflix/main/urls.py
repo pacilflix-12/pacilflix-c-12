@@ -6,10 +6,10 @@ app_name = 'main'
 
 urlpatterns = [
     path('', show_main, name='show_main'),
-    path('trailer', show_trailer, name='trailer'),
-    path('tayangan', show_tayangan, name='tayangan'),
-    path('ulasan', show_ulasan, name='ulasan'),
-    path('series', show_series, name='series'),
-    path('film', show_film, name='film'),
-    path('episode', show_episode, name='episode'),
+    path('trailer/', show_trailer, name='trailer'),
+    path('tayangan/', show_tayangan, name='tayangan'),
+    path('ulasan/', show_ulasan, name='ulasan'),
+    path('series/', show_series, name='series'),
+    path('film/', show_film, name='film'),
+    path('episode/', show_episode, name='episode'),
 ]
