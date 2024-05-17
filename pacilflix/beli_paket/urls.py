@@ -1,8 +1,8 @@
 from django.urls import path
-from beli_paket.views import buy_package
+from beli_paket.views import show_beli_paket
 
 app_name = 'beli_paket'
 
 urlpatterns = [
-    path('/buy-package', buy_package, name='buy_package'),
+    path('/beli-paket', show_beli_paket, name='beli_paket'),
 ]

@@ -152,11 +152,11 @@
     <div class="container">
         <h1>Daftar Kontributor</h1>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Filter</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href=#>Pemain</a>
-              <a href=#>Sutradara</a>
-              <a href=#>Penulis</a>
+            <button class="dropbtn">Filter</button>
+            <div class="dropdown-content">
+              <a href="?peran=pemain">Pemain</a>
+              <a href="?peran=sutradara">Sutradara</a>
+              <a href="?peran=penulis_skenario">Penulis Skenario</a>
             </div>
         </div>
 
@@ -168,12 +168,12 @@
                 <th>Kewarganegaraan</th>
             </tr>
 
-            {% for contributor in contributors %}
+            {% for kontributor in kontributor_list %}
             <tr>
-                <td>{{ contributor.id }}</td>
-                <td>{{ contributor.nama }}</td>
-                <td>{{ contributor.jenis_kelamin }}</td>
-                <td>{{ contributor.kewarganegaraan }}</td>
+                <td>{{ kontributor.0 }}</td>
+                <td>{{ kontributor.1 }}</td>
+                <td>{{ kontributor.2|yesno:"Laki-laki,Perempuan" }}</td>
+                <td>{{ kontributor.3 }}</td>
             </tr>
             {% endfor %}
             <!-- <tr>
@@ -220,20 +220,3 @@
         </table>
     </div>
 </head>
-<script>
-    function filterContributors() {
-        let filterValue = document.getElementById('filterInput').value.toLowerCase();
-        let rows = document.querySelectorAll('#contributorTable tbody tr');
-        rows.forEach(row => {
-            let cells = row.getElementsByTagName('td');
-            let match = false;
-            for (let i = 0; i < cells.length; i++) {
-                if (cells[i].innerText.toLowerCase().includes(filterValue)) {
-                    match = true;
-                    break;
-                }
-            }
-            row.style.display = match ? '' : 'none';
-        });
-    }
-</script>

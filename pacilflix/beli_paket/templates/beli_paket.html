@@ -156,14 +156,26 @@
                 <th>Resolusi Layar</th>
                 <th>Dukungan Perangkat</th>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Basic</td>
                 <td>12.000</td>
                 <td>720p</td>
                 <td>Laptop</td>
-            </tr>
+            </tr> -->
         </table>
-        <h3>Pilih Metode Pembayaran</h3>
+        <h2>Pilih Metode Pembayaran:</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="metode_pembayaran">Metode Pembayaran:</label>
+            <select id="metode_pembayaran" name="metode_pembayaran" required>
+                <option value="transfer_bank">Transfer Bank</option>
+                <option value="kartu_kredit">Kartu Kredit</option>
+                <option value="e_wallet">E-Wallet</option>
+            </select>
+            <br><br>
+            <button type="submit">Bayar</button>
+        </form>
+        <!-- <h3>Pilih Metode Pembayaran</h3>
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Pilih Opsi</button>
             <div id="myDropdown" class="dropdown-content">
@@ -171,6 +183,6 @@
               <a href=#>Kartu Kredit</a>
               <a href=#>E-Wallet</a>
             </div>
-        </div>
+        </div> -->
     </div>
 </head>

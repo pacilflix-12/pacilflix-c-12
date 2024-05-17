@@ -174,19 +174,13 @@
                 <th>Beli</th>
             </tr>
 
-            {% for paket in paket_tersedia %}
+            {% for package in available_packages %}
             <tr>
-                <td>{{ paket.1 }}</td>
-                <td>{{ paket.2 }}</td>
-                <td>{{ paket.3 }}</td>
-                <td>{{ paket.4 }}</td>
-                <td>
-                    <form method="post" action="{% url 'beli_paket' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="paket_id" value="{{ paket.0 }}">
-                        <button type="submit">Beli</button>
-                    </form>
-                </td>
+                <td>{{ package.1 }}</td>
+                <td>{{ package.2 }}</td>
+                <td>{{ package.3 }}</td>
+                <td>{{ package.4 }}</td>
+                <td><a href="{% url 'show_beli_paket' package.0 %}">Beli</a></td>
             </tr>
             {% endfor %}
             <!-- <tr>
