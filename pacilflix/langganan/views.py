@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.utils import timezone
 
+
 @login_required
 def langganan_view(request):
     user = request.user

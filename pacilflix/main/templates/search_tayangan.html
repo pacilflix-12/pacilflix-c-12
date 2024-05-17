@@ -11,28 +11,67 @@
             font-family: Arial, sans-serif;
         }
 
-        .navbar {
-            background-color: #333;
-            padding: 12px 0;
+        h1,
+        .left-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        card-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            /* Cards side by side */
+            overflow-x: auto;
+            /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            /* Prevent cards from shrinking, keeping them a fixed width */
+            width: 300px;
+            /* Fixed width for each card */
+            background: #333;
+            border-radius: 10px;
             overflow: hidden;
         }
 
-        .navbar a,
-        .navbar button {
+        .section {
+            display: flex;
+            flex-direction: column;
+            /* Stack sections vertically */
+            margin-bottom: 20px;
+            /* Space between sections */
+        }
+
+        select {
+            margin: 20px auto;
+            display: block;
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: 1px solid grey;
+            font-size: 18px;
+            width: 300px;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            font-size: 16px;
-            /* Reduced font size */
-            background: none;
-            border: none;
-            cursor: pointer;
+            font-size: 20px;
         }
 
-        .navbar a:hover,
-        .navbar button:hover {
+        .navbar a:hover {
             background-color: #555;
         }
 
@@ -49,24 +88,18 @@
             border-radius: 4px;
         }
 
+        .search-container input[type="text"] {
+            flex-grow: 1;
+        }
+
         .search-container button {
             background-color: #555;
             color: white;
+            cursor: pointer;
         }
 
         .search-container button:hover {
             background-color: #666;
-        }
-
-        select {
-            margin: 20px auto;
-            display: block;
-            padding: 10px 15px;
-            background-color: #333;
-            color: white;
-            border: 1px solid grey;
-            font-size: 18px;
-            width: 300px;
         }
 
         .card-container {
@@ -111,9 +144,16 @@
             text-decoration: none;
         }
 
-        h1 {
+        .additional-text {
             text-align: center;
             margin-top: 20px;
+            font-size: 1.5em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -121,14 +161,12 @@
 <body>
     {% include 'navbar.html' with islogin=islogin %}
 
-    <h1>Daftar Tayangan</h1>
-    <h1 class="left-text">10 tayangan terbaik (Global):</h1>
+    <h1>Daftar Tayangan Dicari</h1>
     <div class="section">
         <div class="card-container">
             <!-- Buat loop di sini atau copy paste secara manual untuk setiap card jika tidak menggunakan JavaScript -->
             <!-- Card 1 -->
-
-            {% for tayangan in top_10 %}
+            {% for tayangan in searched_tayangan %}
             <div class="card">
                 <div class="card-info">
                     <h2>{{ tayangan.1 }}</h2>
@@ -137,52 +175,12 @@
                     </p>
                     <p><strong>Release Date Trailer:</strong> {{tayangan.6}} </p>
                     <p><strong>Total view in last 7 days:</strong> belom di apply </p>
+                    <a href="/tayangan/{{tayangan.0}}">Detail Tayangan</a>
                 </div>
             </div>
             {% endfor %}
-        </div>
-        <!-- Anda bisa menambahkan daftar atau elemen lain di sini untuk menampilkan tayangan -->
-        <!-- Section for Films -->
-        <div class="section">
-            <h1>Film:</h1>
-            <div class="card-container">
-                <!-- Cards for films -->
-                <!-- Example card -->
-                {% for film in films %}
-                <div class="card">
-                    <div class="card-info">
-                        <h2>{{film.1}}</h2>
-                        <p><strong>Sinopsis Trailer:</strong> {{film.2}}</p>
-                        <p><strong>URL Trailer:</strong> <a href="{{film.3}}">{{film.3}}</a></p>
-                        <p><strong>Release Date Trailer:</strong> {{film.4}}</p>
-                    </div>
-                </div>
-                {% endfor %}
-                <!-- Additional film cards as needed -->
-            </div>
-        </div>
-
-        <!-- Section for Series -->
-
-
-        <h1>Series:</h1>
-        <div class="card-container">
-            <!-- Cards for series -->
-            <!-- Example card -->
-            {% for series in series_list %}
-            <div class="card">
-                <div class="card-info">
-                    <h2>{{series.1}}</h2>
-                    <p><strong>Sinopsis Trailer:</strong> {{series.2}}</p>
-                    <p><strong>URL Trailer:</strong> <a href="{{series.3}}">{{series.3}}</a></p>
-                    <p><strong>Release Date Trailer:</strong> {{series.4}}</p>
-                </div>
-            </div>
-            {% endfor %}
-            <!-- Additional series cards as needed -->
         </div>
     </div>
-
 
 </body>
 

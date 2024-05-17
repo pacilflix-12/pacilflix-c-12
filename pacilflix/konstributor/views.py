@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/authentication/login/')
 def show_kontributor(request: HttpRequest) -> HttpResponse:
     with connection.cursor() as cursor:
-        cursor.execute("SELECT id, nama, jenis_kelamin, kewarganegaraan FROM contributors")
+        cursor.execute(
+            "SELECT id, nama, jenis_kelamin, kewarganegaraan FROM contributors")
         rows = cursor.fetchall()
         contributors = [
             {
@@ -20,6 +21,7 @@ def show_kontributor(request: HttpRequest) -> HttpResponse:
             for row in rows
         ]
     return contributors
+
 
 @login_required(login_url='/authentication/login/')
 def contributor_list(request):

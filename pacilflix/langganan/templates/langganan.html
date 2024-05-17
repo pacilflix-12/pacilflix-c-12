@@ -16,58 +16,73 @@
             display: flex;
             justify-content: space-between;
         }
+
         .navbar a {
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             font-size: 20px;
         }
+
         .navbar a:hover {
             background-color: #555;
         }
+
         .search-container {
             display: flex;
             align-items: center;
         }
-        .search-container input[type="text"], .search-container button {
+
+        .search-container input[type="text"],
+        .search-container button {
             padding: 8px;
             margin: 4px 2px;
             border: none;
             border-radius: 4px;
         }
+
         .search-container input[type="text"] {
             flex-grow: 1;
         }
+
         .search-container button {
             background-color: #555;
             color: white;
             cursor: pointer;
         }
+
         .search-container button:hover {
             background-color: #666;
         }
+
         .card-container {
             display: flex;
             overflow-x: auto;
             gap: 20px;
             padding: 20px;
         }
-        body, h1, th {
+
+        body,
+        h1,
+        th {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #06041f;
             color: #fff;
         }
+
         .container {
             width: 80%;
             margin: 20px auto;
             text-align: center;
         }
+
         h1 {
             color: #fff;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -75,22 +90,27 @@
             color: #333;
             margin-bottom: 20px;
         }
+
         th {
             background-color: #380d0d;
             color: white;
             text-align: center;
         }
+
         td {
             padding: 8px;
             text-align: left;
             vertical-align: middle;
         }
+
         tr {
             border-bottom: 10px solid #06041f;
         }
+
         .centered {
             text-align: center;
         }
+
         .beli-btn {
             padding: 6px 12px;
             background-color: #e50914;
@@ -103,11 +123,12 @@
             transition: background-color 0.2s;
             display: inline-block;
         }
+
         .beli-btn:hover {
             background-color: #f63535;
         }
     </style>
-    
+
     <div class="navbar">
         <a href="#home">Home</a>
         <a href="#news">Daftar Tayangan</a>
@@ -122,7 +143,7 @@
         </div>
         <!-- <a href="#login" style="float:right">Login</a> -->
     </div>
-    
+
     <div class="container">
         <h1>HALAMAN KELOLA LANGGANAN</h1>
         <h3>Paket Langganan Aktif Anda</h3>
@@ -155,13 +176,13 @@
             </tr> -->
         </table>
         {% else %}
-            <tr>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
         {% endif %}
 
         <h3>Pilih Paket Lain</h3>
