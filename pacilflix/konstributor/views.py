@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/authentication/login/')
+<<<<<<< HEAD
 def show_kontributor(request):
     if get_user(request=request) == None:
         return redirect('/login/')
@@ -35,6 +36,29 @@ def show_kontributor(request):
     }
 
     return render(request, 'konstributor.html', context)
+=======
+def show_kontributor(request: HttpRequest) -> HttpResponse:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT id, nama, jenis_kelamin, kewarganegaraan FROM contributors")
+        rows = cursor.fetchall()
+        contributors = [
+            {
+                'id': row[0],
+                'nama': row[1],
+                'jenis_kelamin': row[2],
+                'kewarganegaraan': row[3],
+            }
+            for row in rows
+        ]
+    return contributors
+
+
+@login_required(login_url='/authentication/login/')
+def contributor_list(request):
+    contributors = show_kontributor()
+    return render(request, 'contributor_list.html', {'contributors': contributors})
+>>>>>>> aecf73dce3aed737c86daf601b7867777ba8219e
 
 # def filter_kontributor(request):
 #     selected_option = request.GET.get('selected_option')

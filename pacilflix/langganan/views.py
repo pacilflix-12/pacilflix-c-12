@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.db import connection
 
+
 @login_required
 def show_langganan(request):
     user_id = request.user.id
