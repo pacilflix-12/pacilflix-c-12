@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +14,36 @@
             padding: 20px;
             line-height: 1.6;
         }
+
         h1 {
             color: #fff;
             text-align: center;
         }
+
         .container {
             width: 80%;
             margin: 0 auto;
             background-color: #333;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
-        ul, li {
+
+        ul,
+        li {
             list-style: none;
             padding: 0;
         }
+
         a {
             color: #08f;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .button {
             display: inline-block;
             background-color: #5C7AEA;
@@ -47,61 +55,107 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .button:hover {
             background-color: #435ebc;
         }
+
         .info {
             background-color: #282828;
             padding: 15px;
             margin-top: 20px;
             border-radius: 4px;
         }
-        .info h2, .info p {
+
+        .info h2,
+        .info p {
             margin-bottom: 10px;
         }
+
         .info h2 {
             color: #aad;
         }
+
+        .review-card {
+            background-color: #444;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card h3 {
+            color: #ffd700;
+            margin: 0;
+            padding: 0;
+        }
+
+        .review-card p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .review-card .review-date {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .review-card .review-rating {
+            font-size: 1.2em;
+            color: #f39c12;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Halaman Film</h1>
         <div class="info">
-            <h2>Makmum</h2>
+            <h2>{{judul}}</h2>
             <button class="button">Tonton</button>
             <button class="button">Unduh Tayangan</button>
             <button class="button">Favorit Tayangan</button>
 
-            <p>Total View: 1,000,000</p>
-            <p>Rating Rata-Rata: 8.5/10</p>
-            <p>Sinopsis: Seorang wanita mengalami kejadian supranatural mengerikan di asrama saat makhluk gaib yang dikenal sebagai 'Makmum' mulai mengikutinya</p>
-            <p>Durasi Film: 120 menit</p>
-            <p>Tanggal Rilis Film: 2020-01-15</p>
-            <p>URL Film: <a href="https://example.com/film-url">https://example.com/film-url</a></p>
+            <p>Total View: {{total_views}}</p>
+            <p>Rating Rata-Rata: {{rating_avg}}/10</p>
+            <p>Sinopsis: {{sinopsis}}</p>
+            <p>Durasi Film: {{durasi_film}} menit</p>
+            <p>Tanggal Rilis Film: {{release_date_film}}</p>
+            <p>URL Film: <a href="{{url_video_film}}">{{url_video_film}}</a></p>
             <h2>Genre:</h2>
             <ul>
-                <li>Horror</li>
+                {% for genre in genres %}
+                <li>{{genre.nama}}</li>
+                {% endfor %}
             </ul>
-            <p>Asal Negara: Indonesia</p>
+            <p>Asal Negara: {{asal_negara}}</p>
             <h2>Pemain:</h2>
             <ul>
-                <li>Titi Kamal</li>
-                <li>Reni Yuliana</li>
-                <li>Bianca Hello</li>
+                {% for player in players %}
+                <li>{{player.nama}}</li>
+                {% endfor %}
             </ul>
             <h2>Penulis Skenario:</h2>
             <ul>
-                <li>Vidya Talisa Ariestya</li>
-                <li>Alim Sudio</li>
+                {% for writer in writers %}
+                <li>{{writer.nama}}</li>
+                {% endfor %}
             </ul>
-            <p>Sutradara: Hadrah Aeng Ratu </p>
+            <p>Sutradara: {{sutradara.nama}}</p>
         </div>
 
         <div class="info">
             <h2>Bagian Ulasan</h2>
-            <!-- Ulasan bisa ditambahkan di sini -->
+            {% for review in reviews %}
+            <div class="review-card">
+                <h3>{{ review.username }}</h3>
+                <p class="review-rating">Rating: {{ review.rating }}/10</p>
+                <p class="review-date">{{ review.timestamp }}</p>
+                <p>{{ review.deskripsi }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </body>
+
 </html>
