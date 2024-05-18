@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +14,37 @@
             padding: 20px;
             line-height: 1.6;
         }
-        h1, h2 {
+
+        h1,
+        h2 {
             color: #fff;
             text-align: center;
         }
+
         .container {
             width: 80%;
             margin: 0 auto;
             background-color: #333;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
-        ul, li {
+
+        ul,
+        li {
             list-style: none;
             padding: 0;
         }
+
         a {
             color: #08f;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .button {
             display: inline-block;
             background-color: #5C7AEA;
@@ -47,9 +56,11 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .button:hover {
             background-color: #435ebc;
         }
+
         .info {
             background-color: #282828;
             padding: 15px;
@@ -58,24 +69,30 @@
         }
     </style>
 </head>
+
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Halaman Episode</h1>
         <div class="info">
-            <h2> Makmum </h2>
-            <p>Sub Judul: Episode 1</p>
+            <h2>{{episode.judul}}</h2>
+            <p>Sub Judul: {{episode.sub_judul}}</p>
             <button class="button">Tonton</button>
             <h2>Episode Lainnya:</h2>
             <ul>
-                <li><a href="#">Link Episode 2</a></li>
-                <li><a href="#">Link Episode 3</a></li>
-                <li><a href="#">Link Episode 4</a></li>
+                {% for i in another_episodes %}
+                <li><a href="/tayangan/{{episode.id_series}}/episode/{{i.sub_judul}}/">Link Episode 2</a></li>
+                {% endfor %}
             </ul>
-            <p>Sinopsis Episode: Kehidupan Percy Jackson terbalik ketika ia mengetahui dirinya adalah anak Poseidon. Makhluk mitos dan rahasia kuno terungkap saat ia memasuki dunia yang tak pernah ia ketahui sebelumnya.</p>
-            <p>Durasi Episode: 30 menit</p>
-            <p>URL Episode: <a href="https://example.com/series/2227db9e-616f-4221-ba5a-b71a555c0510/episodes/1.mp4">https://example.com/series/2227db9e-616f-4221-ba5a-b71a555c0510/episodes/1.mp4</a></p>
-            <p>Tanggal Rilis Episode: 2010-04-14</p>
+            <p>Sinopsis Episode: {{episode.sinopsis}}
+            </p>
+            <p>Durasi Episode: {{episode.durasi}} menit</p>
+            <p>URL Episode: <a href="{{episode.url_video}}">{{episode.url_video}}</a>
+            </p>
+            <p>Tanggal Rilis Episode: {{episode.release_date}}</p>
         </div>
     </div>
 </body>
+
 </html>

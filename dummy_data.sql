@@ -580,7 +580,7 @@ INSERT INTO
 VALUES
 	(
 		'kucingku123',
-		'jhsdbjds123o',
+		'1',
 		'2227db9e-616f-4221-ba5a-b71a555c0510',
 		'Indonesia'
 	),
