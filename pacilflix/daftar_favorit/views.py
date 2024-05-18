@@ -13,7 +13,7 @@ def favorite_list(request: HttpRequest) -> HttpResponse:
 
     favorites = get_all_user_favorites(username=user)
 
-    return render(request=request, template_name='daftar_favorit.html', context=favorites)
+    return render(request=request, template_name='daftar_favorit.html', context={**favorites,"islogin": get_user(request=request) != None})
 
 
 def sub_favorite_list(request: HttpRequest, timestamp: str):
@@ -30,7 +30,7 @@ def sub_favorite_list(request: HttpRequest, timestamp: str):
     sub_favorites = get_all_subfavorites(
         username=user, timestamp=new_timestamp)
 
-    return render(request=request, template_name='daftar_subfavorit.html', context=sub_favorites)
+    return render(request=request, template_name='daftar_subfavorit.html', context={**sub_favorites,"islogin": get_user(request=request) != None})
 
 
 def delete_sub_favorite(request: HttpRequest, timestamp: str, id_tayangan: str):
@@ -70,4 +70,4 @@ def modal_favorite(request: HttpRequest, id_tayangan: str) -> HttpResponseRedire
     else:
         favorite_lists = get_all_user_favorites(username=user)
 
-        return render(request=request, template_name='pilih_folder_favorit.html', context=favorite_lists)
+        return render(request=request, template_name='pilih_folder_favorit.html', context={**favorite_lists,"islogin": user != None})
