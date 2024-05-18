@@ -1,7 +1,6 @@
 {% if islogin %}
 <div class="navbar">
-	<a href="#home">Home</a>
-	<a href="#daftar-tayangan">Daftar Tayangan</a>
+	<a href="{% url 'main:tayangan' %}">Daftar Tayangan</a>
 	<a href="#daftar-kontributor">Daftar Kontributor</a>
 	<a href="#favorit">Kelola Daftar Favorit</a>
 	<a href="#unduhan">Kelola Daftar Unduhan</a>
