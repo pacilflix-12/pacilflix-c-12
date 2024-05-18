@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 
-from main.services import get_all_films, get_all_series, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_user_country
+from main.services import get_all_films, get_all_series, get_episode_detail, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_user_country
 from utils.get_user import get_user
 
 # Create your views here.
@@ -71,13 +71,13 @@ def show_ulasan(request: HttpRequest) -> HttpResponse:
 def show_series(request: HttpRequest, id_tayangan: str) -> HttpResponse:
     series_detail = get_series_detail(id_tayangan=id_tayangan)
 
-    return render(request, "series.html", context=series_detail)
+    return render(request, "series.html", context={**series_detail, "username": get_user(request=request), "islogin": get_user(request=request) != None})
 
 
 def show_film(request: HttpRequest, id_tayangan: str) -> HttpResponse:
     film_detail = get_film_detail(id_tayangan=id_tayangan)
 
-    return render(request, "film.html", context=film_detail)
+    return render(request, "film.html", context={**film_detail, "islogin": get_user(request=request) != None})
 
 
 def show_detail_tayangan(request: HttpRequest, id_tayangan: str) -> HttpResponse:
@@ -91,15 +91,15 @@ def show_detail_tayangan(request: HttpRequest, id_tayangan: str) -> HttpResponse
         return show_series(request=request, id_tayangan=id_tayangan)
 
 
-def show_episode(request: HttpRequest) -> HttpResponse:
+def show_episode(request: HttpRequest, id_tayangan: str, sub_judul: str) -> HttpResponse:
+    username = get_user(request=request)
+    if username == None:  # kalau belum login pergi ke trailer
+        return redirect('/login/')
 
-    return render(request, "episode.html")
+    episode = get_episode_detail(id_tayangan=id_tayangan, sub_judul=sub_judul)
+
+    return render(request, "episode.html", context={**episode, "islogin": get_user(request=request) != None})
 
 
 def show_main(request: HttpRequest) -> HttpResponse:
-    context = {
-        'name': 'Kelompok',
-        'class': 'Basdat F'
-    }
-
-    return render(request, "tayangan_dummy.html", context)
+    return redirect('/tayangan')

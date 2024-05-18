@@ -10,6 +10,7 @@ urlpatterns = [
     path('tayangan/', show_tayangan, name='tayangan'),
     path('tayangan/<str:id_tayangan>',
          show_detail_tayangan, name='tayangan-detail'),
+    path('tayangan/<str:id_tayangan>/episode/<str:sub_judul>/',
+         show_episode, name='episode'),
     path('ulasan/', show_ulasan, name='ulasan'),
-    path('episode/', show_episode, name='episode'),
 ]

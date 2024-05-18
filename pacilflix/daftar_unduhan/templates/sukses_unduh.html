@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sukses Menambahkan Tayangan</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin: 50px;
+		}
+
+		h1 {
+			color: #4CAF50;
+		}
+
+		p {
+			font-size: 18px;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			font-size: 16px;
+			color: #fff;
+			background-color: #4CAF50;
+			text-decoration: none;
+			border-radius: 5px;
+			margin-top: 20px;
+		}
+
+		.button:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+
+<body>
+	{% include 'navbar.html' with islogin=islogin %}
+
+	<h1>SUKSES MENAMBAHKAN TAYANGAN KE DAFTAR UNDUHAN</h1>
+	<p>Selamat! Anda telah berhasil mengunduh <strong>{{ judul_tayangan }}</strong> dan akan berlaku hingga
+		<strong>{{expiry_date}}</strong>.
+	</p>
+	<p>Cek informasi selengkapnya pada halaman daftar unduhan.</p>
+	<a href="/daftar_unduhan" class="button">Pergi menuju daftar unduhan</a>
+</body>
+
+</html>
