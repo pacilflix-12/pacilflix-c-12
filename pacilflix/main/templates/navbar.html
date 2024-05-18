@@ -3,8 +3,12 @@
 		background-color: #333;
 		padding: 12px 0;
 		overflow: hidden;
+		position: fixed;
+		top: 0;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
+		z-index: 1000;
 	}
 
 	.navbar a {
@@ -47,8 +51,7 @@
 </style>
 {% if islogin %}
 <div class="navbar">
-	<a href="/">Home</a>
-	<a href="/tayangan/">Daftar Tayangan</a>
+	<a href="{% url 'main:tayangan' %}">Daftar Tayangan</a>
 	<a href="#daftar-kontributor">Daftar Kontributor</a>
 	<a href="/daftar_favorit/">Kelola Daftar Favorit</a>
 	<a href="/daftar_unduhan/">Kelola Daftar Unduhan</a>
