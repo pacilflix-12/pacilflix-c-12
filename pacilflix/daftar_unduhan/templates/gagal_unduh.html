@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gagal Menghapus Tayangan</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			padding: 50px;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			color: #d9534f;
+		}
+
+		p {
+			font-size: 16px;
+			color: #333;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			font-size: 16px;
+			color: #fff;
+			background-color: #0275d8;
+			border: none;
+			border-radius: 5px;
+			text-decoration: none;
+			transition: background-color 0.3s;
+		}
+
+		.btn:hover {
+			background-color: #025aa5;
+		}
+	</style>
+</head>
+
+<body>
+	{% include 'navbar.html' with islogin=islogin %}
+
+	<div class="container">
+		<h1>GAGAL MENGHAPUS TAYANGAN DARI DAFTAR UNDUHAN</h1>
+		<p>Tayangan minimal harus berada di daftar unduhan selama 1 hari agar bisa dihapus.</p>
+		<a href="/daftar_unduhan" class="btn">Pergi ke halaman daftar unduhan</a>
+	</div>
+</body>
+
+</html>

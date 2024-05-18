@@ -91,9 +91,6 @@ DATABASES = {
         'PASSWORD': environ.get('PGPASSWORD'),
         'HOST': environ.get('PGHOST'),
         'PORT': environ.get('PGPORT', 5432),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
     }
 }
 

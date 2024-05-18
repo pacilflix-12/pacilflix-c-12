@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Download List</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body, h1, th {
+        body,
+        h1,
+        th {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif; /* Updated font family for body and headings */
+            font-family: 'Montserrat', sans-serif;
+            /* Updated font family for body and headings */
             background-color: #06041f;
             color: #fff;
         }
+
         .container {
             width: 80%;
             margin: 20px auto;
             text-align: center;
         }
+
         h1 {
             color: #fff;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -29,22 +36,28 @@
             color: #333;
             margin-bottom: 20px;
         }
+
         th {
             background-color: #380d0d;
             color: white;
             text-align: center;
         }
+
         td {
             padding: 8px;
             text-align: left;
             vertical-align: middle;
         }
+
         tr {
-            border-bottom: 10px solid #06041f; /* Add a border with the same color as the body background */
+            border-bottom: 10px solid #06041f;
+            /* Add a border with the same color as the body background */
         }
+
         .centered {
             text-align: center;
         }
+
         .hapus-btn {
             padding: 6px 12px;
             background-color: #e50914;
@@ -55,30 +68,42 @@
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.2s;
-            display: inline-block; /* Allows the padding and centering to work */
+            display: inline-block;
+            /* Allows the padding and centering to work */
         }
+
         .hapus-btn:hover {
             background-color: #f63535;
         }
+
         .movie-details {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .movie-img {
-            height: 150px; /* Adjust as needed */
+            height: 150px;
+            /* Adjust as needed */
             object-fit: contain;
             border-radius: 4px;
-            margin-bottom: 8px; /* Space between image and title */
+            margin-bottom: 8px;
+            /* Space between image and title */
         }
+
         .movie-title {
             text-align: center;
-            margin-top: 8px; /* Space between image and title */
-            color: #06041f; /* Adjust color as needed */
+            margin-top: 8px;
+            /* Space between image and title */
+            color: #06041f;
+            /* Adjust color as needed */
         }
     </style>
 </head>
+
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Daftar Unduhan</h1>
         <table>
@@ -88,28 +113,24 @@
                 <th>Aksi</th>
             </tr>
 
+            {% for download in downloads %}
             <tr>
                 <td>
                     <div class="movie-details">
-                        <img src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt="Avengers" class="movie-img">
-                        <div class="movie-title">Avengers</div>
+                        <div class="movie-title">{{download.judul}}</div>
                     </div>
                 </td>
-                <td class="centered">2024-04-11 23:46:22</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="movie-details">
-                        <img src="https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg" alt="Harry Potter" class="movie-img">
-                        <div class="movie-title">Harry Potter</div>
-                    </div>
+                <td class="centered">{{download.timestamp}}</td>
+                <td class="centered">
+                    <form action="/daftar_unduhan/{{download.id_tayangan}}/{{download.timestamp_iso}}" method="post">
+                        <button type="submit" class="hapus-btn">Hapus</button>
+                    </form>
                 </td>
-                <td class="centered">2024-01-31 10:35:04</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
             </tr>
+            {% endfor %}
             <!-- Repeat rows as necessary -->
         </table>
     </div>
 </body>
+
 </html>

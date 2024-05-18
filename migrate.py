@@ -83,11 +83,17 @@ def reset():
     cursor.execute('CREATE SCHEMA public')
     print('Success create schema!')
 
-    cursor.close()
-    connection.close()
-
     migrate()
     seeding()
+
+    cursor = connection.cursor()
+    with open('trigger_sql.sql', 'r') as sql_file:
+        sql_commands = sql_file.read()
+
+    cursor.execute(sql_commands)
+
+    cursor.close()
+    connection.close()
 
 
 if __name__ == '__main__':

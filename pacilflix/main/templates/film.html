@@ -108,13 +108,21 @@
 </head>
 
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Halaman Film</h1>
         <div class="info">
             <h2>{{judul}}</h2>
             <button class="button">Tonton</button>
-            <button class="button">Unduh Tayangan</button>
-            <button class="button">Favorit Tayangan</button>
+
+            <form action="/daftar_unduhan/{{id_tayangan}}" method="post">
+                <button class="button" type="submit">Unduh Tayangan</button>
+            </form>
+
+            <form action="/daftar_favorit/modal/{{id_tayangan}}" method="get">
+                <button class="button">Favorit Tayangan</button>
+            </form>
 
             <p>Total View: {{total_views}}</p>
             <p>Rating Rata-Rata: {{rating_avg}}/10</p>

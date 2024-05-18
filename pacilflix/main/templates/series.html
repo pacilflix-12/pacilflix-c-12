@@ -115,6 +115,8 @@
 </head>
 
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Halaman Series</h1>
         <div class="info">
@@ -122,11 +124,19 @@
             <h2>Episode:</h2>
             <ul>
                 {% for episode in episodes %}
-                <li><a href="/episode/{{ episode.id_series }}">{{ episode.sub_judul }}</a></li>
+                <li>
+                    <a href="/tayangan/{{episode.id_series}}/episode/{{ episode.sub_judul }}">{{ episode.sub_judul}}</a>
+                </li>
                 {% endfor %}
             </ul>
-            <button class="button">Unduh Tayangan</button>
-            <button class="button">Favorit Tayangan</button>
+
+            <form action="/daftar_unduhan/{{id_tayangan}}" method="post">
+                <button class="button" type="submit">Unduh Tayangan</button>
+            </form>
+
+            <form action="/daftar_favorit/modal/{{id_tayangan}}" method="get">
+                <button class="button">Favorit Tayangan</button>
+            </form>
         </div>
 
         <div class="info">
