@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'main',
     'konstributor',
     'langganan',
-    'beli_paket',
     'daftar_unduhan',
     'daftar_favorit',
     'authentication',
