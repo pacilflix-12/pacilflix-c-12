@@ -12,7 +12,7 @@ def download_list(request: HttpRequest):
     downloads = get_all_user_downloads(username=user)
     print(downloads)
 
-    return render(request=request, template_name='daftar_unduhan.html', context={**downloads, 'islogin': True})
+    return render(request=request, template_name='daftar_unduhan.html', context={**downloads,"islogin": get_user(request=request) != None})
 
 
 def downloads_delete(request: HttpRequest, id_tayangan: str, datetime: str):
