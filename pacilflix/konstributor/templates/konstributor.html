@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -260,3 +261,278 @@
         });
     }
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Contributor List</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>List Langganan</title>
+
+    <style>
+        .navbar {
+            background-color: #333;
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"],
+        .search-container button {
+            padding: 8px;
+            margin: 4px 2px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .search-container input[type="text"] {
+            flex-grow: 1;
+        }
+
+        .search-container button {
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #666;
+        }
+
+        .card-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        body,
+        h1,
+        th {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #06041f;
+            color: #fff;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #380d0d;
+            color: white;
+            text-align: center;
+        }
+
+        td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        tr {
+            border-bottom: 10px solid #06041f;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .dropbtn {
+            background-color: #e50914;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #f63535;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">Daftar Tayangan</a>
+        <a href="#news">Daftar Kontributor</a>
+        <a href="#news">Kelola Daftar Favorit</a>
+        <a href="#news">Kelola Daftar Unduhan</a>
+        <a href="#news">Kelola langganan</a>
+        <a href="#news">Logout</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Search</button>
+        </div>
+        <!-- <a href="#login" style="float:right">Login</a> -->
+    </div>
+
+    <div class="container">
+        <h1>Daftar Kontributor</h1>
+        <div class="dropdown">
+<<<<<<< HEAD
+            <button class="dropbtn">Filter</button>
+            <div class="dropdown-content">
+              <a href="?peran=pemain">Pemain</a>
+              <a href="?peran=sutradara">Sutradara</a>
+              <a href="?peran=penulis_skenario">Penulis Skenario</a>
+=======
+            <button onclick="myFunction()" class="dropbtn">Filter</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href=#>Pemain</a>
+                <a href=#>Sutradara</a>
+                <a href=#>Penulis</a>
+>>>>>>> aecf73dce3aed737c86daf601b7867777ba8219e
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Nama</th>
+                <th>Tipe</th>
+                <th>Jenis Kelamin</th>
+                <th>Kewarganegaraan</th>
+            </tr>
+
+            {% for kontributor in kontributor_list %}
+            <tr>
+                <td>{{ kontributor.0 }}</td>
+                <td>{{ kontributor.1 }}</td>
+                <td>{{ kontributor.2|yesno:"Laki-laki,Perempuan" }}</td>
+                <td>{{ kontributor.3 }}</td>
+            </tr>
+            {% endfor %}
+            <!-- <tr>
+                <td>Titi Kamal</td>
+                <td>Pemain</td>
+                <td>perempuan</td>
+                <td>Indonesia</td>
+            </tr>
+
+            <tr>
+                <td>Reni Yuliana</td>
+                <td>Pemain</td>
+                <td>perempuan</td>
+                <td>Indonesia</td>
+            </tr>
+
+            <tr>
+                <td>Bianca Hello</td>
+                <td>Pemain</td>
+                <td>perempuan</td>
+                <td>Indonesia</td>
+            </tr>
+
+            <tr>
+                <td>Vidya Talisa Ariestya</td>
+                <td>Penulis</td>
+                <td>perempuan</td>
+                <td>Indonesia</td>
+            </tr>
+
+            <tr>
+                <td>Alim Soediyo</td>
+                <td>Penulis</td>
+                <td>laki-laki</td>
+                <td>Indonesia</td>
+            </tr>
+
+            <tr>
+                <td>Hadrah Aeng Ratu</td>
+                <td>Sutradara</td>
+                <td>perempuan</td>
+                <td>Indonesia</td>
+            </tr> -->
+        </table>
+    </div>
+</head>
+<<<<<<< HEAD
+=======
+<script>
+    function filterContributors() {
+        let filterValue = document.getElementById('filterInput').value.toLowerCase();
+        let rows = document.querySelectorAll('#contributorTable tbody tr');
+        rows.forEach(row => {
+            let cells = row.getElementsByTagName('td');
+            let match = false;
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(filterValue)) {
+                    match = true;
+                    break;
+                }
+            }
+            row.style.display = match ? '' : 'none';
+        });
+    }
+</script>
+>>>>>>> aecf73dce3aed737c86daf601b7867777ba8219e
+>>>>>>> Stashed changes

@@ -11,7 +11,6 @@
             background-color: #1c1c1c;
             color: #ddd;
             margin: 0;
-            padding: 20px;
             line-height: 1.6;
         }
 
@@ -110,6 +109,9 @@
 <body>
     <div class="container">
         <h1>Halaman Film</h1>
+        {% if error %}
+        <p style="color: red;">{{error}}</p>
+        {% endif %}
         <div class="info">
             <h2>{{judul}}</h2>
             <button class="button">Tonton</button>
@@ -154,6 +156,25 @@
                 <p>{{ review.deskripsi }}</p>
             </div>
             {% endfor %}
+        </div>
+
+        <div class="info review-form">
+            <h2>Tambah Ulasan</h2>
+            <form action="/ulasan/{{id_tayangan}}" method="post">
+                {% csrf_token %}
+                <label for="deskripsi">Deskripsi Ulasan:</label>
+                <textarea id="deskripsi" name="deskripsi" required></textarea>
+
+                <label for="rating">Rating yang diberikan:</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>Pilih Rating</option>
+                    {% for i in 1|to:10 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+
+                <button class="button" type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </body>
