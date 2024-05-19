@@ -13,9 +13,9 @@ def get_active_subscription(user: str) -> dict:
     if active_subscription:
         paket = active_subscription[0]
         devices_query = f"""
-            SELECT dukungan_perangkat
-            FROM DUKUNGAN_PERANGKAT
-            WHERE nama_perangkat = '{paket[0]}'
+            SELECT d.dukungan_perangkat
+            FROM DUKUNGAN_PERANGKAT d
+            WHERE d.nama_paket = '{paket[0]}'
         """
         devices = [device[0] for device in select(devices_query)]
         return {
@@ -34,9 +34,9 @@ def get_available_packages() -> list:
     available_packages = []
     for package in packages:
         devices_query = f"""
-            SELECT dukungan_perangkat
-            FROM DUKUNGAN_PERANGKAT
-            WHERE nama_perangkat = '{package[0]}'
+            SELECT d.dukungan_perangkat
+            FROM DUKUNGAN_PERANGKAT d
+            WHERE d.nama_paket = '{package[0]}'
         """
         devices = [device[0] for device in select(devices_query)]
         available_packages.append({
@@ -46,6 +46,7 @@ def get_available_packages() -> list:
             "dukungan_perangkat": devices
         })
     return available_packages
+
 
 def get_transaction_history(user: str) -> list:
     query = f"""
@@ -58,13 +59,12 @@ def get_transaction_history(user: str) -> list:
     history = select(query)
     transaction_history = [
         {
-            "username": transaction[0],
+            "nama_paket": transaction[0],
             "start_date_time": transaction[1],
             "end_date_time": transaction[2],
-            "nama_paket": transaction[3],
-            "metode_pembayaran": transaction[4],
-            "timestamp_pembayaran": transaction[5],
-            "harga": transaction[6]
+            "metode_pembayaran": transaction[3],
+            "timestamp_pembayaran": transaction[4],
+            "harga": transaction[5]
         }
         for transaction in history
     ]

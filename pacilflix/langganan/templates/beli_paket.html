@@ -143,18 +143,13 @@
                 <th>Dukungan Perangkat</th>
             </tr>
             <tr>
-                <td>{{ package_details.name }}</td>
-                <td>{{ package_details.price }}</td>
-                <td>{{ package_details.resolution }}</td>
-                <td>{{ package_details.devices|join:", " }}</td>
+                <td>{{ nama }}</td>
+                <td>{{ harga }}</td>
+                <td>{{ resolusi_layar }}</td>
+                <td>{{ dukungan_perangkat|join:", " }}</td>
             </tr>
         </table>
-            <!-- <tr>
-                <td>Basic</td>
-                <td>12.000</td>
-                <td>720p</td>
-                <td>Laptop</td>
-            </tr> -->
+
         </table>
         <h2>Pilih Metode Pembayaran:</h2>
         <form method="post" action="{% url 'langganan:purchase_package' %}">
@@ -162,7 +157,7 @@
             <input type="hidden" name="package_name" value="{{ package_details.name }}">
             <label for="payment_method">Metode Pembayaran:</label>
             <select id="payment_method" name="payment_method">
-                <option value="transfer">Transfer Bank</option>
+                <option value="transfer">Transfer</option>
                 <option value="credit_card">Kartu Kredit</option>
                 <option value="ewallet">E-Wallet</option>
             </select>

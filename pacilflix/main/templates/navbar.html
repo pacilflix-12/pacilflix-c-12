@@ -52,10 +52,10 @@
 {% if islogin %}
 <div class="navbar">
 	<a href="{% url 'main:tayangan' %}">Daftar Tayangan</a>
-	<a href="#daftar-kontributor">Daftar Kontributor</a>
+	<a href="/contributors/">Daftar Kontributor</a>
 	<a href="/daftar_favorit/">Kelola Daftar Favorit</a>
 	<a href="/daftar_unduhan/">Kelola Daftar Unduhan</a>
-	<a href="#langganan">Kelola Langganan</a>
+	<a href="/manage/">Kelola Langganan</a>
 
 	<form action="/logout/" method="post">
 		<button type="submit">Logout</button>

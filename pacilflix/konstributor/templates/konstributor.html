@@ -11,23 +11,15 @@
     <title>List Langganan</title>
 
     <style>
-        .navbar {
-            background-color: #333;
-            padding: 12px 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .navbar a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .navbar a:hover {
-            background-color: #555;
+        body,
+        h1,
+        th {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            /* Updated font family for body and headings */
+            background-color: #06041f;
+            color: #fff;
         }
 
         .search-container {
@@ -156,6 +148,9 @@
             display: block;
         }
     </style>
+</head>
+<body>
+    {% include 'navbar.html' with islogin=islogin %}
 
     <div class="container">
         <h1>Daftar Kontributor</h1>
@@ -168,7 +163,7 @@
             </div>
         </div>
 
-        {% elif view_type == "all_contributors_with_details" %}
+        
         <table border="1">
             <thead>
                 <tr>
@@ -189,7 +184,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% endif %}
+
             <!-- <tr>
                 <td>Titi Kamal</td>
                 <td>Pemain</td>
@@ -232,7 +227,8 @@
                 <td>Indonesia</td>
             </tr> -->
     </div>
-</head>
+</body>
+
 <!-- <script>
     function filterContributors() {
         let filterValue = document.getElementById('filterInput').value.toLowerCase();

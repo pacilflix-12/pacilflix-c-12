@@ -81,7 +81,11 @@ WSGI_APPLICATION = 'pacilflix.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+print(environ.get('PGDATABASE'))
+print(environ.get('PGUSER'))
+print(environ.get('PGPASSWORD'))
+print(environ.get('PGHOST'))
+print(environ.get('PGPORT', 5432))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

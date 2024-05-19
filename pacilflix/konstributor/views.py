@@ -1,5 +1,3 @@
-import select
-from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from konstributor.services import (
@@ -7,42 +5,46 @@ from konstributor.services import (
     get_contributor_detail, 
     get_all_contributors_with_details
 )
+from utils.get_user import get_user
 
 
-@login_required
 def show_all_contributors(request: HttpRequest) -> HttpResponse:
     contributors = get_all_contributors()
     context = {
-        "contributors": contributors
+        "contributors": contributors,
+        "islogin": get_user(request=request) != None
     }
-    return render(request, "all_contributors.html", context=context)
+    return render(request, "konstributor.html", context=context)
 
-@login_required
+
 def show_all_contributors(request: HttpRequest) -> HttpResponse:
     contributors = get_all_contributors()
     context = {
         "view_type": "all_contributors",
-        "contributors": contributors
+        "contributors": contributors,
+        "islogin": get_user(request=request) != None
     }
-    return render(request, "contributors.html", context=context)
+    return render(request, "konstributor.html", context=context)
 
-@login_required
+
 def show_contributor_detail(request: HttpRequest, id_contributor: str) -> HttpResponse:
     contributor_detail = get_contributor_detail(id_contributor)
     context = {
         "view_type": "contributor_detail",
-        "contributor": contributor_detail
+        "contributor": contributor_detail,
+        "islogin": get_user(request=request) != None
     }
-    return render(request, "contributors.html", context=context)
+    return render(request, "konstributor.html", context=context)
 
-@login_required
+
 def show_all_contributors_with_details(request: HttpRequest) -> HttpResponse:
     contributors_with_details = get_all_contributors_with_details()
     context = {
         "view_type": "all_contributors_with_details",
-        "contributors_with_details": contributors_with_details
+        "contributors_with_details": contributors_with_details,
+        "islogin": get_user(request=request) != None
     }
-    return render(request, "contributors.html", context=context)
+    return render(request, "konstributor.html", context=context)
 
 
 
