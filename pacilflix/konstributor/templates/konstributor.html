@@ -157,56 +157,39 @@
         }
     </style>
 
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">Daftar Tayangan</a>
-        <a href="#news">Daftar Kontributor</a>
-        <a href="#news">Kelola Daftar Favorit</a>
-        <a href="#news">Kelola Daftar Unduhan</a>
-        <a href="#news">Kelola langganan</a>
-        <a href="#news">Logout</a>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Search</button>
-        </div>
-        <!-- <a href="#login" style="float:right">Login</a> -->
-    </div>
-
     <div class="container">
         <h1>Daftar Kontributor</h1>
         <div class="dropdown">
-<<<<<<< HEAD
-            <button class="dropbtn">Filter</button>
-            <div class="dropdown-content">
-              <a href="?peran=pemain">Pemain</a>
-              <a href="?peran=sutradara">Sutradara</a>
-              <a href="?peran=penulis_skenario">Penulis Skenario</a>
-=======
             <button onclick="myFunction()" class="dropbtn">Filter</button>
             <div id="myDropdown" class="dropdown-content">
                 <a href=#>Pemain</a>
                 <a href=#>Sutradara</a>
                 <a href=#>Penulis</a>
->>>>>>> aecf73dce3aed737c86daf601b7867777ba8219e
             </div>
         </div>
 
-        <table>
-            <tr>
-                <th>Nama</th>
-                <th>Tipe</th>
-                <th>Jenis Kelamin</th>
-                <th>Kewarganegaraan</th>
-            </tr>
-
-            {% for kontributor in kontributor_list %}
-            <tr>
-                <td>{{ kontributor.0 }}</td>
-                <td>{{ kontributor.1 }}</td>
-                <td>{{ kontributor.2|yesno:"Laki-laki,Perempuan" }}</td>
-                <td>{{ kontributor.3 }}</td>
-            </tr>
-            {% endfor %}
+        {% elif view_type == "all_contributors_with_details" %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Tipe</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Kewarganegaraan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contributor in contributors_with_details %}
+                    <tr>
+                        <td>{{ contributor.nama }}</td>
+                        <td>{{ contributor.tipe|join:", " }}</td>
+                        <td>{{ contributor.jenis_kelamin }}</td>
+                        <td>{{ contributor.kewarganegaraan }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
             <!-- <tr>
                 <td>Titi Kamal</td>
                 <td>Pemain</td>
@@ -248,12 +231,9 @@
                 <td>perempuan</td>
                 <td>Indonesia</td>
             </tr> -->
-        </table>
     </div>
 </head>
-<<<<<<< HEAD
-=======
-<script>
+<!-- <script>
     function filterContributors() {
         let filterValue = document.getElementById('filterInput').value.toLowerCase();
         let rows = document.querySelectorAll('#contributorTable tbody tr');
@@ -269,5 +249,4 @@
             row.style.display = match ? '' : 'none';
         });
     }
-</script>
->>>>>>> aecf73dce3aed737c86daf601b7867777ba8219e
+</script> -->

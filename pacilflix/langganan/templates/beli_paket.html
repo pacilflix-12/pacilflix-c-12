@@ -131,31 +131,24 @@
         .show {display:block;}
     </style>
     
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">Daftar Tayangan</a>
-        <a href="#news">Daftar Kontributor</a>
-        <a href="#news">Kelola Daftar Favorit</a>
-        <a href="#news">Kelola Daftar Unduhan</a>
-        <a href="#news">Kelola langganan</a>
-        <a href="#news">Logout</a>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Search</button>
-        </div>
-        <!-- <a href="#login" style="float:right">Login</a> -->
-    </div>
 
     <div class="container">
         <h1>HALAMAN BELI</h1>
         <h3>Informasi Paket yang Ingin Dibeli</h3>
-        <table>
+        <table border="1">
             <tr>
                 <th>Nama</th>
                 <th>Harga</th>
                 <th>Resolusi Layar</th>
                 <th>Dukungan Perangkat</th>
             </tr>
+            <tr>
+                <td>{{ package_details.name }}</td>
+                <td>{{ package_details.price }}</td>
+                <td>{{ package_details.resolution }}</td>
+                <td>{{ package_details.devices|join:", " }}</td>
+            </tr>
+        </table>
             <!-- <tr>
                 <td>Basic</td>
                 <td>12.000</td>
@@ -164,15 +157,15 @@
             </tr> -->
         </table>
         <h2>Pilih Metode Pembayaran:</h2>
-        <form method="post">
+        <form method="post" action="{% url 'langganan:purchase_package' %}">
             {% csrf_token %}
-            <label for="metode_pembayaran">Metode Pembayaran:</label>
-            <select id="metode_pembayaran" name="metode_pembayaran" required>
-                <option value="transfer_bank">Transfer Bank</option>
-                <option value="kartu_kredit">Kartu Kredit</option>
-                <option value="e_wallet">E-Wallet</option>
+            <input type="hidden" name="package_name" value="{{ package_details.name }}">
+            <label for="payment_method">Metode Pembayaran:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="transfer">Transfer Bank</option>
+                <option value="credit_card">Kartu Kredit</option>
+                <option value="ewallet">E-Wallet</option>
             </select>
-            <br><br>
             <button type="submit">Bayar</button>
         </form>
         <!-- <h3>Pilih Metode Pembayaran</h3>
@@ -186,3 +179,15 @@
         </div> -->
     </div>
 </head>
+<script>
+    $(document).ready(function() {
+        $('#purchaseForm').submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            $.post($(this).attr('action'), $(this).serialize(), function(response) {
+                alert("Terimakasih telah membeli paket ini");
+                window.location.href = "{% url 'langganan:manage_subscription' %}";
+            });
+        });
+    });
+</script>

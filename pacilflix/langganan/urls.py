@@ -1,8 +1,10 @@
 from django.urls import path
-from langganan.views import langganan_view
-from beli_paket.views import beli_paket
+from .views import manage_subscription, buy_package, purchase_package_view
+
+app_name = 'langganan'
 
 urlpatterns = [
-    path('langganan/', langganan_view, name='langganan_view'),
-    path('beli_paket/', beli_paket, name='beli_paket'),
+    path('manage/', manage_subscription, name='manage_subscription'),
+    path('buy/', buy_package, name='buy_package'),
+    path('purchase/', purchase_package_view, name='purchase_package'),
 ]
