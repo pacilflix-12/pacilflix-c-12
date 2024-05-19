@@ -85,13 +85,22 @@
       background-color: #4a1515;
       /* Merah yang lebih gelap saat hover */
     }
-  </style>
 
-{% include 'navbar.html' with islogin=islogin %}
+    .error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
+  {% include 'navbar.html' with islogin=islogin %}
   <div class="registration-container">
     <h2>FORM REGISTRASI</h2>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
     <form method="post"> <!-- Sesuaikan action dengan URL penangan registrasi Anda -->
       {% csrf_token %}
       <div class="form-group">
