@@ -9,17 +9,17 @@ from utils.get_user import get_user
 def favorite_list(request: HttpRequest) -> HttpResponse:
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     favorites = get_all_user_favorites(username=user)
 
-    return render(request=request, template_name='daftar_favorit.html', context=favorites)
+    return render(request=request, template_name='daftar_favorit.html', context={**favorites, 'islogin': True})
 
 
 def sub_favorite_list(request: HttpRequest, timestamp: str):
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     new_timestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
 
@@ -30,13 +30,13 @@ def sub_favorite_list(request: HttpRequest, timestamp: str):
     sub_favorites = get_all_subfavorites(
         username=user, timestamp=new_timestamp)
 
-    return render(request=request, template_name='daftar_subfavorit.html', context=sub_favorites)
+    return render(request=request, template_name='daftar_subfavorit.html', context={**sub_favorites, 'islogin': True})
 
 
 def delete_sub_favorite(request: HttpRequest, timestamp: str, id_tayangan: str):
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     new_timestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
 
@@ -50,7 +50,7 @@ def delete_sub_favorite(request: HttpRequest, timestamp: str, id_tayangan: str):
 def modal_favorite(request: HttpRequest, id_tayangan: str) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     if request.method == 'POST':
         favorite_list = request.POST.get('favorite_list')

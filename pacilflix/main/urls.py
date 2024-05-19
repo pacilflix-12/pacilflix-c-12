@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import show_main, show_trailer, show_tayangan, show_ulasan, show_episode, show_detail_tayangan
+from main.views import show_main, show_trailer, show_tayangan, kirim_ulasan, show_episode, show_detail_tayangan
 from main.views import show_main
 
 app_name = 'main'
@@ -12,5 +12,5 @@ urlpatterns = [
          show_detail_tayangan, name='tayangan-detail'),
     path('tayangan/<str:id_tayangan>/episode/<str:sub_judul>/',
          show_episode, name='episode'),
-    path('ulasan/', show_ulasan, name='ulasan'),
+    path('ulasan/<str:id_tayangan>', kirim_ulasan, name='ulasan'),
 ]

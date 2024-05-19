@@ -6,14 +6,13 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/authentication/login/')
-
 def show_kontributor(request):
     if get_user(request=request) == None:
-        return redirect('/login/')
-    
+        return redirect('/register/')
+
     # Mengambil data kontributor dari database
     tipe = request.GET.get('tipe', None)
-    
+
     # Mengambil data kontributor dari database
     query = """
         SELECT k.nama, p.tipe, k.jenis_kelamin, k.kewarganegaraan
@@ -25,7 +24,7 @@ def show_kontributor(request):
     if tipe:
         query += " WHERE p.tipe = %s"
         params.append(tipe)
-    
+
     with connection.cursor() as cursor:
         cursor.execute(query, params)
         kontributor_list = cursor.fetchall()

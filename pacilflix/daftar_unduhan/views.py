@@ -7,18 +7,18 @@ from utils.get_user import get_user
 def download_list(request: HttpRequest):
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     downloads = get_all_user_downloads(username=user)
     print(downloads)
 
-    return render(request=request, template_name='daftar_unduhan.html', context=downloads)
+    return render(request=request, template_name='daftar_unduhan.html', context={**downloads, 'islogin': True})
 
 
 def downloads_delete(request: HttpRequest, id_tayangan: str, datetime: str):
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     if request.method == 'POST':
         try:
@@ -33,7 +33,7 @@ def downloads_delete(request: HttpRequest, id_tayangan: str, datetime: str):
 def downloads_add(request: HttpRequest, id_tayangan: str):
     user = get_user(request=request)
     if not user:
-        return redirect('/login/')
+        return redirect('/register/')
 
     if request.method == 'POST':
         context_add = add_downloads(id_tayangan=id_tayangan,
