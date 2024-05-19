@@ -5,7 +5,7 @@ from main.views import show_main
 app_name = 'main'
 
 urlpatterns = [
-    path('', show_main, name='show_main'),
+    path('home/', show_main, name='show_main'),
     path('trailer/', show_trailer, name='trailer'),
     path('tayangan/', show_tayangan, name='tayangan'),
     path('tayangan/<str:id_tayangan>',
