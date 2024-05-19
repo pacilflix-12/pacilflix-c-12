@@ -1,8 +1,8 @@
 from django.urls import path
-from konstributor.views import show_kontributor
+from konstributor.views import show_all_contributors_with_details
 
-app_name = 'daftar_kontributor'
+app_name = 'konstributor'
 
 urlpatterns = [
-    path('/contributor', show_kontributor, name='show_contributor'),
+    path('contributors/', show_all_contributors_with_details, name='all_contributors_with_details')
 ]

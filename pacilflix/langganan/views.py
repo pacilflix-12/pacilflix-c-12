@@ -1,35 +1,36 @@
-# views.py
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from django.db import connection
+from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse
+from .services import get_active_subscription, get_available_packages, get_transaction_history, purchase_package
 
 
-@login_required
-def show_langganan(request):
-    user_id = request.user.id
-
-    with connection.cursor() as cursor:
-        cursor.execute("""
-            SELECT 
-                p.nama, p.harga, p.resolusi_layar, p.dukungan_perangkat, t.start_date_time, t.end_date_time
-            FROM transaksi t
-            JOIN paket_langganan p ON t.paket_id = p.id
-            WHERE t.user_id = %s AND t.end_date_time > NOW()
-            ORDER BY t.end_date_time DESC
-            LIMIT 1
-        """, [user_id])
-        active_subscription = cursor.fetchone()
-
-    with connection.cursor() as cursor:
-        cursor.execute("""
-            SELECT id, nama, harga, resolusi_layar, dukungan_perangkat 
-            FROM paket_langganan
-        """)
-        available_packages = cursor.fetchall()
+def manage_subscription(request: HttpRequest) -> HttpResponse:
+    user = request.user.username
+    active_subscription = get_active_subscription(user)
+    available_packages = get_available_packages()
+    transaction_history = get_transaction_history(user)
 
     context = {
-        'active_subscription': active_subscription,
-        'available_packages': available_packages,
+        "active_subscription": active_subscription,
+        "available_packages": available_packages,
+        "transaction_history": transaction_history,
     }
 
-    return render(request, 'langganan.html', context)
+    return render(request, 'langganan/langganan.html', context)
+
+def buy_package(request: HttpRequest) -> HttpResponse:
+    package_name = request.GET.get('package')
+    if package_name:
+        context = {
+            "nama": package_name
+        }
+        return render(request, 'langganan/beli_paket.html', context)
+    return redirect('langganan:manage_subscription')
+
+def purchase_package_view(request: HttpRequest) -> HttpResponse:
+    if request.method == 'POST':
+        user = request.user.username
+        package_name = request.POST.get('nama')
+        payment_method = request.POST.get('metode_pembayaran')
+        purchase_package(user, package_name, payment_method)
+        return redirect('langganan:manage_subscription')
+    return redirect('langganan:manage_subscription')
