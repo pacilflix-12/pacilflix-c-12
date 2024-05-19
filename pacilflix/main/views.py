@@ -1,7 +1,9 @@
+from datetime import datetime
+from typing import Optional
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 
-from main.services import get_all_films, get_all_series, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_user_country
+from main.services import create_ulasan, get_all_films, get_all_series, get_episode_detail, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_user_country
 from utils.get_user import get_user
 
 # Create your views here.
@@ -57,49 +59,72 @@ def show_tayangan(request: HttpRequest) -> HttpResponse:
         "top_10": top_10_tayangan,
         "films": films,
         "series_list": series_list,
-        "islogin": True
+        "islogin": True,
     }
 
     return render(request, "tayangan.html", context=context)
 
 
-def show_ulasan(request: HttpRequest) -> HttpResponse:
+def kirim_ulasan(request: HttpRequest, id_tayangan: str) -> HttpResponse:
+    username = get_user(request=request)
+    if username == None:  # kalau belum login pergi ke register
+        return redirect('/register/')
 
-    return render(request, "ulasan.html")
+    if request.method == 'POST':
+        deskripsi = request.POST.get('deskripsi')
+        rating = request.POST.get('rating')
+
+        if not deskripsi:
+            return redirect(request.get_full_path())
+        if not rating:
+            request.get_full_path()
+            request.get_raw_uri()
+            return redirect(request.get_full_path())
+
+        try:
+            create_ulasan(id_tayangan=id_tayangan, username=username,
+                          timestamp=datetime.now(), rating=int(rating), deskripsi=deskripsi)
+            return redirect(f'/tayangan/{id_tayangan}')
+        except Exception as e:
+            return redirect(f'/tayangan/{id_tayangan}?error={str(e)}')
+
+    return redirect('/tayangan')
 
 
-def show_series(request: HttpRequest, id_tayangan: str) -> HttpResponse:
+def show_series(request: HttpRequest, id_tayangan: str, error: Optional[str] = None) -> HttpResponse:
     series_detail = get_series_detail(id_tayangan=id_tayangan)
 
-    return render(request, "series.html", context=series_detail)
+    return render(request, "series.html", context={**series_detail, "username": get_user(request=request), "islogin": get_user(request=request) != None, "ratings": range(1, 11), "error": error})
 
 
-def show_film(request: HttpRequest, id_tayangan: str) -> HttpResponse:
+def show_film(request: HttpRequest, id_tayangan: str, error: Optional[str] = None) -> HttpResponse:
     film_detail = get_film_detail(id_tayangan=id_tayangan)
 
-    return render(request, "film.html", context=film_detail)
+    return render(request, "film.html", context={**film_detail, "islogin": get_user(request=request) != None, "ratings": range(1, 11), "error": error})
 
 
 def show_detail_tayangan(request: HttpRequest, id_tayangan: str) -> HttpResponse:
     username = get_user(request=request)
-    if username == None:  # kalau belum login pergi ke trailer
-        return redirect('/trailer/')
+    if username == None:  # kalau belum login pergi ke register
+        return redirect('/register/')
+
+    error = request.GET.get('error')
 
     if get_tayangan_type(id_tayangan=id_tayangan) == 'film':
-        return show_film(request=request, id_tayangan=id_tayangan)
+        return show_film(request=request, id_tayangan=id_tayangan, error=error)
     else:
-        return show_series(request=request, id_tayangan=id_tayangan)
+        return show_series(request=request, id_tayangan=id_tayangan, error=error)
 
 
-def show_episode(request: HttpRequest) -> HttpResponse:
+def show_episode(request: HttpRequest, id_tayangan: str, sub_judul: str) -> HttpResponse:
+    username = get_user(request=request)
+    if username == None:  # kalau belum login pergi ke register
+        return redirect('/register/')
 
-    return render(request, "episode.html")
+    episode = get_episode_detail(id_tayangan=id_tayangan, sub_judul=sub_judul)
+
+    return render(request, "episode.html", context={**episode, "islogin": get_user(request=request) != None})
 
 
 def show_main(request: HttpRequest) -> HttpResponse:
-    context = {
-        'name': 'Kelompok',
-        'class': 'Basdat F'
-    }
-
-    return render(request, "tayangan_dummy.html", context)
+    return redirect('/tayangan')

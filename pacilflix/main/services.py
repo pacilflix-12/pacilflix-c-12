@@ -1,5 +1,6 @@
+from datetime import datetime
 from typing import Any, Literal
-from utils.query import select
+from utils.query import insert, select
 
 
 def get_searched_film(keyword: str):
@@ -245,3 +246,35 @@ def get_film_detail(id_tayangan: str):
             } for review in reviews
         ]
     }
+
+
+def get_episode_detail(id_tayangan: str, sub_judul: str):
+    episode = select(
+        f"select * from episode where id_series = '{id_tayangan}' and sub_judul = '{sub_judul}'")[0]
+    judul = select(
+        f"select judul from tayangan where id = '{id_tayangan}'")[0][0]
+    another_episodes = select(
+        f"select sub_judul from episode where id_series = '{id_tayangan}'")
+
+    return {
+        "episode": {
+            "id_series": episode[0],
+            "sub_judul": episode[1],
+            "sinopsis": episode[2],
+            "durasi": episode[3],
+            "url_video": episode[4],
+            "release_date": episode[5],
+            "judul": judul
+        },
+        "another_episodes": [
+            {
+                "id_series": episode[0],
+                "sub_judul": i[0],
+            } for i in another_episodes
+        ]
+    }
+
+
+def create_ulasan(id_tayangan: str, username: str, timestamp: datetime, rating: int, deskripsi: str):
+    insert(
+        f"insert into ulasan values ('{id_tayangan}', '{username}', '{timestamp}', {rating}, '{deskripsi}')")

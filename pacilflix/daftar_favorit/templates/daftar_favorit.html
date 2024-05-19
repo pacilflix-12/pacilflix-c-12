@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Download List</title>
+    <title>Favorite List</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-
-        body, h1, th {
+        body,
+        h1,
+        th {
             margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif; /* Updated font family for body and headings */
+            padding-top: 60;
+            font-family: 'Montserrat', sans-serif;
+            /* Updated font family for body and headings */
             background-color: #06041f;
             color: #fff;
         }
+
         .container {
             width: 80%;
             margin: 20px auto;
             text-align: center;
+            margin-top: 100px;
         }
+
         h1 {
             color: #fff;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -30,24 +37,28 @@
             color: #333;
             margin-bottom: 20px;
         }
+
         th {
             background-color: #380d0d;
             color: white;
             text-align: center;
         }
+
         td {
             padding: 8px;
             text-align: left;
             vertical-align: middle;
         }
-        
+
         tr {
-            border-bottom: 10px solid #06041f; /* Add a border with the same color as the body background */
+            border-bottom: 10px solid #06041f;
+            /* Add a border with the same color as the body background */
         }
 
         .centered {
             text-align: center;
         }
+
         .hapus-btn {
             padding: 6px 12px;
             background-color: #e50914;
@@ -58,30 +69,42 @@
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.2s;
-            display: inline-block; /* Allows the padding and centering to work */
+            display: inline-block;
+            /* Allows the padding and centering to work */
         }
+
         .hapus-btn:hover {
             background-color: #f63535;
         }
+
         .movie-details {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .movie-img {
-            height: 150px; /* Adjust as needed */
+            height: 150px;
+            /* Adjust as needed */
             object-fit: contain;
             border-radius: 4px;
-            margin-bottom: 8px; /* Space between image and title */
+            margin-bottom: 8px;
+            /* Space between image and title */
         }
+
         .movie-title {
             text-align: center;
-            margin-top: 8px; /* Space between image and title */
-            color: #06041f; /* Adjust color as needed */
+            margin-top: 8px;
+            /* Space between image and title */
+            color: #06041f;
+            /* Adjust color as needed */
         }
     </style>
 </head>
+
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Daftar Favorit</h1>
         <table>
@@ -91,27 +114,23 @@
                 <th>Aksi</th>
             </tr>
 
+            {% for favorite in favorites %}
             <tr>
                 <td>
                     <div class="movie-details">
-                        <img src="https://cinemags.org/wp-content/uploads/2023/12/Percy-Jackson-and-the-Olympians-akan-tayang-mulai-tanggal-20-Desember-2023-di-Disney-Hotstar..png" alt="Percy Jackson" class="movie-img">
-                        <div class="movie-title">Percy Jackson</div>
+                        <a class="movie-title" href="/daftar_favorit/{{favorite.timestamp_iso}}">{{favorite.judul}}</a>
                     </div>
                 </td>
-                <td class="centered">2023-05-15 9:30:00</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="movie-details">
-                        <img src="https://m.media-amazon.com/images/M/MV5BMTYyOTAxMDA0OF5BMl5BanBnXkFtZTcwNzgwNTc1NA@@._V1_.jpg" alt="Insidious" class="movie-img">
-                        <div class="movie-title">Insidious</div>
-                    </div>
+                <td class="centered">{{favorite.timestamp}}</td>
+                <td class="centered">
+                    <form action="/daftar_favorit/{{favorite.timestamp_iso}}" method="post">
+                        <button type="submit" class="hapus-btn">Hapus</button>
+                    </form>
                 </td>
-                <td class="centered">2023-06-27 19:00:00</td>
-                <td class="centered"><a href="#" class="hapus-btn" onclick="alert('Remove feature not implemented yet.'); return false;">Hapus</a></td>
             </tr>
+            {% endfor %}
         </table>
     </div>
 </body>
+
 </html>

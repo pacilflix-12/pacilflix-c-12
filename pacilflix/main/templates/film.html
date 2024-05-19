@@ -11,7 +11,6 @@
             background-color: #1c1c1c;
             color: #ddd;
             margin: 0;
-            padding: 20px;
             line-height: 1.6;
         }
 
@@ -108,13 +107,24 @@
 </head>
 
 <body>
+    {% include 'navbar.html' with islogin=islogin %}
+
     <div class="container">
         <h1>Halaman Film</h1>
+        {% if error %}
+        <p style="color: red;">{{error}}</p>
+        {% endif %}
         <div class="info">
             <h2>{{judul}}</h2>
             <button class="button">Tonton</button>
-            <button class="button">Unduh Tayangan</button>
-            <button class="button">Favorit Tayangan</button>
+
+            <form action="/daftar_unduhan/{{id_tayangan}}" method="post">
+                <button class="button" type="submit">Unduh Tayangan</button>
+            </form>
+
+            <form action="/daftar_favorit/modal/{{id_tayangan}}" method="get">
+                <button class="button">Favorit Tayangan</button>
+            </form>
 
             <p>Total View: {{total_views}}</p>
             <p>Rating Rata-Rata: {{rating_avg}}/10</p>
@@ -154,6 +164,32 @@
                 <p>{{ review.deskripsi }}</p>
             </div>
             {% endfor %}
+        </div>
+
+        <div class="info review-form">
+            <h2>Tambah Ulasan</h2>
+            <form action="/ulasan/{{id_tayangan}}" method="post">
+                {% csrf_token %}
+                <label for="deskripsi">Deskripsi Ulasan:</label>
+                <textarea id="deskripsi" name="deskripsi" required></textarea>
+
+                <label for="rating">Rating yang diberikan:</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>Pilih Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button class="button" type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </body>
