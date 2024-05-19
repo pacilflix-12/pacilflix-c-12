@@ -3,7 +3,7 @@ from typing import Optional
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 
-from main.services import create_ulasan, get_all_films, get_all_series, get_episode_detail, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_user_country
+from main.services import create_ulasan, get_all_films, get_all_series, get_episode_detail, get_film_detail, get_searched_film, get_series_detail, get_tayangan_type, get_top_10_global, get_top_10_lokal, get_total_views_last_week, get_user_country
 from utils.get_user import get_user
 
 # Create your views here.
@@ -16,9 +16,11 @@ def show_trailer(request: HttpRequest) -> HttpResponse:
     top_10_tayangan = get_top_10_global()
     films = get_all_films()
     series_list = get_all_series()
+    print((*top_10_tayangan[0],
+          get_total_views_last_week(top_10_tayangan[0][0])))
 
     context = {
-        "top_10": top_10_tayangan,
+        "top_10": [(*top_10_tayangan[i], get_total_views_last_week(top_10_tayangan[i][0])) for i in range(len(top_10_tayangan))],
         "films": films,
         "series_list": series_list,
         "islogin": False
@@ -56,7 +58,7 @@ def show_tayangan(request: HttpRequest) -> HttpResponse:
     series_list = get_all_series()
 
     context = {
-        "top_10": top_10_tayangan,
+        "top_10": [(*top_10_tayangan[i], get_total_views_last_week(top_10_tayangan[i][0])) for i in range(len(top_10_tayangan))],
         "films": films,
         "series_list": series_list,
         "islogin": True,
