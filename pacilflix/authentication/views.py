@@ -48,6 +48,6 @@ def register(request: HttpRequest) -> HttpResponse:
 
 def logout(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        response = redirect('/register/')
+        response = redirect('/')
         response.delete_cookie('ticket')
         return response
